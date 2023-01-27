@@ -1,0 +1,29 @@
+ЗАДАНИЕ #1. Java Core:
+- CLI-приложение: принимает произвольный текст как аргумент командной строки, делит строку на абзацы, выводит список полученных абзацев, 
+для каждого абзаца выводится количество слов в этом абзаце. 
+
+Сам код :
+
+import java.util.Scanner; 
+ 
+public class Program 
+{ 
+ public static void main(String[] args) { 
+  Scanner scanner = new Scanner(System.in); 
+  String text = scanner.nextLine(); 
+    String result = "";
+    int count = 0;
+    if(text.length() != 0) {
+        count ++;
+        for(int i = 0;i < text.length(); i++) {
+        result += text.charAt(i);
+            if(text.charAt(i) == ' ') {
+                count ++;
+            }
+            if(text.charAt(i) == '?'|| text.charAt(i) == '.'||text.charAt(i) == '!') {
+                System.out.println(result + "- " + count);
+                result = "";
+                count = 0;
+            }
+        }    
+    }
