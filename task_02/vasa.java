@@ -14,12 +14,9 @@ class vasa {
             final URL url = new URL("http://localhost:9200/doc_index/_doc/1");
             final HttpURLConnection con = (HttpURLConnection) url.openConnection();
             final Map<String, String> parameters = new HashMap<>();
-            con.setRequestMethod("POST");
-            con.setRequestProperty("Content-Type", "application/json");
-            con.setConnectTimeout(5000);
-            con.setReadTimeout(10000);
+
             parameters.put("title", "foo");
-            parameters.put("body", "ывоарлыорфао лоцлаоивылофалд лиоылилдфорадуц одкиалоывидл");
+            parameters.put("body", "okey");
             parameters.put("userId", "1");
 
             con.setDoOutput(true);
