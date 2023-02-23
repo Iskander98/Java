@@ -10,7 +10,7 @@ class temp {
 
     public static String name() {
         try {
-            final URL url = new URL("http://localhost:9200/books_index/_doc/2");
+            final URL url = new URL("http://localhost:9200/books_index/_search");
             final HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
             con.setRequestProperty("Content-Type", "application/json");

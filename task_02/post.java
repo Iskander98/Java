@@ -4,17 +4,16 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
-class vasa {
+class post {
     public static void main(String[] args) {
         System.out.println(post());
     }
 
     public static String post() {
         try {
-            final URL url = new URL("http://localhost:9200/doc_index/_doc/1");
+            final URL url = new URL("http://jsonplaceholder.typicode.com/posts?_limit=10");
             final HttpURLConnection con = (HttpURLConnection) url.openConnection();
             final Map<String, String> parameters = new HashMap<>();
-
             parameters.put("title", "foo");
             parameters.put("body", "okey");
             parameters.put("userId", "1");
