@@ -5,10 +5,10 @@ import java.net.*;
 
 class temp {
     public static void main(String[] args) {
-        System.out.println(name());
+        System.out.println(name("{ \"text : \": \""));
     }
 
-    public static String name() {
+    public static String name(String string) {
         try {
             final URL url = new URL("http://localhost:9200/books_index/_search");
             final HttpURLConnection con = (HttpURLConnection) url.openConnection();
