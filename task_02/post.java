@@ -18,6 +18,8 @@ class post {
             parameters.put("body", "okey");
             parameters.put("userId", "1");
 
+            con.setRequestMethod("PUT");
+            con.setRequestProperty("Content-Type", "application/json");
             con.setDoOutput(true);
             final DataOutputStream out = new DataOutputStream(con.getOutputStream());
             out.writeBytes(getParamsString(parameters));
@@ -35,7 +37,7 @@ class post {
             ex.printStackTrace();
             return "";
         }
-    }
+    }Scanner
 
     public static String getParamsString(final Map<String, String> params) {
         final StringBuilder result = new StringBuilder();
@@ -57,4 +59,28 @@ class post {
                 ? resultString.substring(0, resultString.length() - 1)
                 : resultString;
     }
+
 }
+
+private static void sendRequest(String text) throws IOException {
+
+        final URL url = new URL("http://localhost:9200/task2/_doc/" + id);
+        id++;
+        final HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+        urlConnection.setDoOutput(true);
+        urlConnection.setRequestMethod("PUT");
+        urlConnection.setRequestProperty("Content-Type", "application/json");
+
+        // Writing the post data to the HTTP request body
+        BufferedWriter httpRequestBodyWriter = new BufferedWriter(
+                new OutputStreamWriter(urlConnection.getOutputStream()));
+        httpRequestBodyWriter.write("{ \"text': \": \"" + text + "\" }");
+        httpRequestBodyWriter.close();
+
+        // Reading from the HTTP response body
+        Scanner httpResponseScanner = new Scanner(urlConnection.getInputStream());
+        while (httpResponseScanner.hasNextLine()) {
+            System.out.printf(httpResponseScanner.nextLine());
+        }
+        httpResponseScanner.close();
+    }
